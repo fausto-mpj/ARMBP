@@ -42,6 +42,8 @@ using SparseArrays: AbstractSparseArray, SparseMatrixCSC, nonzeros, nnz, nzrange
 using StatsAPI: StatsAPI, fit, fit!
 using StatsFuns: log2π
 
+
+
 # HiddenMarkovModels.jl `include`
 include("types/abstract_hmm.jl")
 
@@ -63,6 +65,21 @@ include("inference/logdensity.jl")
 include("inference/chainrules.jl")
 
 include("types/hmm.jl")
+
+# HiddenMarkovModels.jl exports
+export AbstractHMM, HMM, ARHMM, AbstractVectorOrNTuple
+export initialization, transition_matrix, obs_distributions
+export fit!, logdensityof, joint_logdensityof
+export viterbi, forward, forward_backward, baum_welch, list_viterbi, list_viterbi2
+export seq_limits
+
+# `struct` com os modelos, o primeiro com distribuição inicial aleatórias, os demais com distribuição inicial fixa
+struct ARMBPModel
+  hmm::ARHMM
+  hmm₁₀::ARHMM
+  hmm₀₁::ARHMM
+end
+
 
 # Básico
 include("armbp/armbp.jl")
@@ -98,12 +115,7 @@ const res2ind = Dict(aminos .=> 1:23)
 const cont2ind = Dict(aminoXatomos .=> 1:115)
 
 
-# `struct` com os modelos, o primeiro com distribuição inicial aleatórias, os demais com distribuição inicial fixa
-struct ARMBPModel
-  hmm::ARHMM
-  hmm₁₀::ARHMM
-  hmm₀₁::ARHMM
-end
+
 
 
 
@@ -129,12 +141,7 @@ export extrair_dados_instancia2, point_plane_distance, point_plane_distance2, ex
 # contagem.jl
 export contar_dfs, tempo_esperado_primeira_passagem, tempo_esperado_primeira_passagem0
 
-# HiddenMarkovModels.jl exports
-export AbstractHMM, HMM, ARHMM, AbstractVectorOrNTuple
-export initialization, transition_matrix, obs_distributions
-export fit!, logdensityof, joint_logdensityof
-export viterbi, forward, forward_backward, baum_welch, list_viterbi, list_viterbi2
-export seq_limits
+
 
 
 end
