@@ -123,7 +123,6 @@ const cont2ind = Dict(aminoXatomos .=> 1:115)
 using Infiltrator
 using Cthulhu
 using ProfileView
-using JET
 using BenchmarkTools
 
 # Exports
