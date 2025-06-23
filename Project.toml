@@ -1,1 +1,6 @@
+name = "ARMBP"
+uuid = "728c42a5-fbe9-405c-9f2a-2b170451cc46"
+authors = ["Fausto Marques Pinheiro Junior <fausto.mpj@protonmail.com> and contributors"]
+version = "0.1.0-DEV"
+
 [deps]
